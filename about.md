@@ -2,9 +2,10 @@
 layout: page
 title: About
 permalink: /about/
+published: true
 ---
 
-Some information about you!
+I am a data scientist working in consulting industry. I graduated from IIT Bombay graduate with major in Aerospace Eng & minor degree in Systems & Control Eng. Machine Learning enthusiast 
 
 ### More Information
 
