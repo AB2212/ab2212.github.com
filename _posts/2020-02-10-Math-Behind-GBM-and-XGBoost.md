@@ -1,6 +1,6 @@
 Many of you ML enthusiasts out there might have used boosting algorithms to get the best predictions (most of the time) on your data. In this blog post, I want to demystify how these algorithms work and how are they different from others. But why would anyone want to do the tough job of looking under the hood? This post is for all the curious minds out there who want to learn and innovate new techniques to tackle unprecedented problems. Let’s get started!
 
-To solve any supervised Machine Learning problem, given the dataset $\{(x\_i, y\_i)\right\}\_{i=1,\ldots,n}$ where $x$ are the features and $y$ is the target, we try to restore the function $y = f(x)$ by approximately estimating $\hat{f}(x)$ while measuring how good the mapping is using a loss function $L(y,f)$ and then take mean over the data to get the final cost, i.e., 
+To solve any supervised Machine Learning problem, given the dataset $\{(x\_i, y\_i)\}\_{i=1,\ldots,n}$ where $x$ are the features and $y$ is the target, we try to restore the function $y = f(x)$ by approximately estimating $\hat{f}(x)$ while measuring how good the mapping is using a loss function $L(y,f)$ and then take mean over the data to get the final cost, i.e., 
 $\hat{f}(x) = \underset{f(x)}{\arg\min}\mathbb{E}\_{x,y}[L(y,f(x))]$
 
 The only problem that remains is to find the $\hat{f}(x)$. Since there are infinite possibilities/combinations to create a function, the functional space is infinite-dimensional. Hence, to find a function we need to limit our search space by restricting our function to a specific structure, $f(x,\theta), \theta \in \mathbb{R}^n$. Remember your linear regression equation? There we only consider linear combination of features multiplied with the parameter, $\hat{f}(x) = \theta^Tx$, we are limiting the search space to find parameters $\theta$, this is same as that. The optimization problem has now become,
@@ -23,7 +23,7 @@ We can solve these above equations to find $\hat{f}$ in an iterative manner as s
 2. For each iteration $t = 1, \dots, T$:
 	i. Calculate pseudo-residuals $r\_t$:
 	 $r\_{it} = -\left[\frac{\partial L(y\_i, f(x\_i))}{\partial f(x\_i)}\right]\_{f(x)=\hat{f}(x)}, \quad{for }\ i=1,\ldots,n$
-	ii. Add a new function $g\_t(x)$ as regression on pseudo-residuals $\left\{ (x\_i, r\_{it}) \right\}\_{i=1, \ldots,n}$
+	ii. Add a new function $g\_t(x)$ as regression on pseudo-residuals $\{ (x\_i, r\_{it})\}\_{i=1, \ldots,n}$
 
 	iii. Find optimal coefficient $\large \rho\_t$ at $g\_t(x)$ regarding initial loss function
 	$\rho\_t = \underset{\rho}{\arg\min}\sum\_{i = 1}^{n} L(y\_i, \hat{f}(x\_i) + \rho \cdot g(x\_i, \theta))$
